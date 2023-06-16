@@ -5,9 +5,16 @@ import IconButton from '@mui/material/IconButton';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { BookDetails } from '../BookDetails/BookDetails';
+import { useDispatch } from 'react-redux';
+import { toggleIsDetailsShown } from '../../../redux/booksSlice';
 
 export const BooksTableRow = ({ book, index }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState();
+  const dispatch = useDispatch();
+  const onRowClick = () => {
+    dispatch(toggleIsDetailsShown(!isOpen));
+    setIsOpen(!isOpen);
+  };
   const {
     title = 'Not defined',
     language = 'Not defined',
@@ -19,8 +26,9 @@ export const BooksTableRow = ({ book, index }) => {
   return (
     <>
       <TableRow
+        selected={isOpen}
         sx={{ '& > *': { borderBottom: 'unset' } }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => onRowClick(book)}
       >
         <TableCell component='th' scope='row'>
           {index + 1}
@@ -43,11 +51,7 @@ export const BooksTableRow = ({ book, index }) => {
           </a>
         </TableCell>
         <TableCell>
-          <IconButton
-            aria-label='expand row'
-            size='small'
-            onClick={() => setIsOpen(!isOpen)}
-          >
+          <IconButton aria-label='expand row' size='small'>
             {isOpen ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>

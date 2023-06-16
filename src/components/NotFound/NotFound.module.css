@@ -1,0 +1,21 @@
+.notFoundBox {
+  margin: 40px auto 20px;
+  width: 300px;
+}
+@media screen and (min-width: 768px) {
+  .notFoundBox {
+    width: 500px;
+  }
+}
+
+.notFoundText {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.notFoundImg {
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+}

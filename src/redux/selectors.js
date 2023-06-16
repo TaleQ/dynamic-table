@@ -4,4 +4,4 @@ export const selectTotalNumber = (store) => store.books.totalNumber;
 export const selectStartIndex = (store) => store.books.startIndex;
 export const selectError = (store) => store.books.error;
 export const selectIsLoading = (store) => store.books.isLoading;
-export const selectIsExpanded = (store) => store.books.isExpanded;
+export const selectIsDetailsShown = (store) => store.books.isDetailsShown;

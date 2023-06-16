@@ -3,7 +3,7 @@ import {
   selectBookDetails,
   selectBooks,
   selectError,
-  selectIsExpanded,
+  selectIsDetailsShown,
   selectIsLoading,
   selectStartIndex,
   selectTotalNumber,
@@ -16,7 +16,7 @@ export const useBooks = () => {
   const startIndex = useSelector(selectStartIndex);
   const error = useSelector(selectError);
   const isLoading = useSelector(selectIsLoading);
-  const isExpanded = useSelector(selectIsExpanded);
+  const isDetailsShown = useSelector(selectIsDetailsShown);
 
   return {
     books,
@@ -25,6 +25,6 @@ export const useBooks = () => {
     startIndex,
     error,
     isLoading,
-    isExpanded,
+    isDetailsShown,
   };
 };

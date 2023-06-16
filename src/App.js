@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { useDispatch } from 'react-redux';
+import { Suspense, lazy, useEffect } from 'react';
+import { getBooksByQuery } from './redux/operations';
+import { Loader } from './components/Loader/Loader';
+import { Route, Routes } from 'react-router-dom';
+import { SharedLayout } from './components/SharedLayout/SharedLayout';
 
-function App() {
+const Home = lazy(() => import('./pages/Home/Home'));
+const Books = lazy(() => import('./pages/Books/Books'));
+const NotFound = lazy(() => import('./components/NotFound/NotFound'));
+
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooksByQuery());
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route path='books' element={<Books />} />
+          <Route path='*' element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
-}
+};
 
 export default App;

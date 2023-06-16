@@ -3,12 +3,11 @@ import { getBookById, getBooksByQuery } from './operations';
 
 const booksInitialState = {
   items: [],
-  book: {},
   totalNumber: null,
   startIndex: 0,
   error: null,
   isLoading: false,
-  isExpanded: false,
+  isDetailsShown: false,
 };
 
 const handlePending = (state) => {
@@ -27,6 +26,11 @@ const booksSlice = createSlice({
     changeIndex: {
       reducer(state, action) {
         state.startIndex = action.payload;
+      },
+    },
+    toggleIsDetailsShown: {
+      reducer(state, action) {
+        state.isDetailsShown = action.payload;
       },
     },
   },
@@ -54,5 +58,5 @@ const booksSlice = createSlice({
   },
 });
 
-export const { changeIndex } = booksSlice.actions;
+export const { changeIndex, toggleIsDetailsShown } = booksSlice.actions;
 export const booksReducer = booksSlice.reducer;
