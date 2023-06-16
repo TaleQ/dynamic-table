@@ -1,10 +1,8 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { getBookById, getBooksByQuery } from './operations';
+import { getAllCountries, getCountryByName } from './operations';
 
-const booksInitialState = {
+const countriesInitialState = {
   items: [],
-  totalNumber: null,
-  startIndex: 0,
   error: null,
   isLoading: false,
   isDetailsShown: false,
@@ -19,9 +17,9 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const booksSlice = createSlice({
-  name: 'books',
-  initialState: booksInitialState,
+const countriesSlice = createSlice({
+  name: 'countries',
+  initialState: countriesInitialState,
   reducers: {
     changeIndex: {
       reducer(state, action) {
@@ -36,27 +34,26 @@ const booksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getBooksByQuery.fulfilled, (state, action) => {
+      .addCase(getAllCountries.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items = action.payload.items;
+        state.items = action.payload;
       })
-      .addCase(getBookById.fulfilled, (state, action) => {
+      .addCase(getCountryByName.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.book = action.payload;
-        state.isExpanded = true;
+        state.items = action.payload;
       })
       .addMatcher(
-        isAnyOf(getBooksByQuery.pending, getBookById.pending),
+        isAnyOf(getAllCountries.pending, getCountryByName.pending),
         handlePending
       )
       .addMatcher(
-        isAnyOf(getBooksByQuery.rejected, getBookById.rejected),
+        isAnyOf(getAllCountries.rejected, getCountryByName.rejected),
         handleRejected
       );
   },
 });
 
-export const { changeIndex, toggleIsDetailsShown } = booksSlice.actions;
-export const booksReducer = booksSlice.reducer;
+export const { changeIndex, toggleIsDetailsShown } = countriesSlice.actions;
+export const countriesReducer = countriesSlice.reducer;

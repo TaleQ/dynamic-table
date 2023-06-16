@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
-import { getBooksByQuery } from '../../redux/operations';
+import { getCountryByName } from '../../redux/operations';
 import { TfiSearch } from 'react-icons/tfi';
+import { useNavigate } from 'react-router-dom';
 
 export const SearchForm = () => {
   const [inputValue, setInputValue] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -18,8 +20,9 @@ export const SearchForm = () => {
       Notify.info('Please enter search query');
       return;
     }
-    dispatch(getBooksByQuery(inputValue));
+    dispatch(getCountryByName(inputValue));
     setInputValue('');
+    navigate('countries');
   };
 
   return (
@@ -28,7 +31,7 @@ export const SearchForm = () => {
         type='text'
         autoComplete='off'
         autoFocus
-        placeholder='Search books'
+        placeholder='Search countries by name or its part'
         value={inputValue}
         onChange={handleChange}
       />

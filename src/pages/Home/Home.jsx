@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <>
       <div className={css.homeThumb}>
-        <h2 className={css.title}>Book Search</h2>
+        <h2 className={css.title}>Countries Search</h2>
         <button className={css.navBtn}>
-          <NavLink to='/books'>Try with custom query</NavLink>
+          <NavLink to='/countries'>See all countries</NavLink>
         </button>
       </div>
     </>
