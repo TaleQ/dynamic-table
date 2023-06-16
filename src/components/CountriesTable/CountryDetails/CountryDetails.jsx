@@ -61,27 +61,35 @@ export const CountryDetails = ({ isOpen, country }) => {
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {timezones?.length > 0
-                        ? timezones.map((timezone) => (
-                            <li key={timezone}>{timezone}</li>
-                          ))
-                        : 'Not defined'}
+                      {timezones?.length > 0 ? (
+                        timezones.map((timezone, index) => (
+                          <li key={index}>{timezone}</li>
+                        ))
+                      ) : (
+                        <span>Not defined</span>
+                      )}
                     </ul>
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {currencies
-                        ? Object.keys(currencies).map((currency) => (
-                            <li key={currency}>{currency}</li>
-                          ))
-                        : 'Not defined'}
+                      {currencies ? (
+                        Object.keys(currencies).map((currency, index) => (
+                          <li key={index}>{currency}</li>
+                        ))
+                      ) : (
+                        <span>Not defined</span>
+                      )}
                     </ul>
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {car.signs?.filter((sign) => sign !== '').length > 0
-                        ? car.signs.map((sign) => <li key={sign}>{sign}</li>)
-                        : 'Not defined'}
+                      {car.signs?.filter((sign) => sign !== '').length > 0 ? (
+                        car.signs.map((sign, index) => (
+                          <li key={index}>{sign}</li>
+                        ))
+                      ) : (
+                        <span>Not defined</span>
+                      )}
                     </ul>
                   </TableCell>
                   <TableCell>

@@ -13,7 +13,7 @@ import { useCountries } from '../../hooks/useCountries';
 export const CountriesTable = () => {
   const { countries } = useCountries();
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -24,6 +24,15 @@ export const CountriesTable = () => {
     setPage(0);
   };
 
+  const renderCountries = countries.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
+  const getAbsoluteIndex = (index) => {
+    return index + page * rowsPerPage;
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label='collapsible table'>
@@ -31,26 +40,26 @@ export const CountriesTable = () => {
           <TableRow>
             <TableCell>Number</TableCell>
             <TableCell>Official&nbsp;name</TableCell>
-            <TableCell align='right'>Common&nbsp;name</TableCell>
-            <TableCell align='right'>Country&nbsp;Code</TableCell>
-            <TableCell align='right'>Capital</TableCell>
-            <TableCell align='right'>Region</TableCell>
-            <TableCell align='right'>Subregion</TableCell>
-            <TableCell align='right'>Languages</TableCell>
+            <TableCell align='center'>Common&nbsp;name</TableCell>
+            <TableCell align='center'>Country&nbsp;Code</TableCell>
+            <TableCell align='center'>Capital</TableCell>
+            <TableCell align='center'>Region</TableCell>
+            <TableCell align='center'>Subregion</TableCell>
+            <TableCell align='center'>Languages</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {countries?.map((country, index) => (
+          {renderCountries?.map((country, index) => (
             <CountriesTableRow
-              key={country.ccn3}
+              key={index}
               country={country}
-              index={index}
+              index={getAbsoluteIndex(index)}
             />
           ))}
         </TableBody>
       </Table>
       <TablePagination
-        rowsPerPageOptions={[5, 10, 20]}
+        rowsPerPageOptions={[10, 20, 50, { value: -1, label: 'All' }]}
         component='div'
         count={countries.length}
         rowsPerPage={rowsPerPage}

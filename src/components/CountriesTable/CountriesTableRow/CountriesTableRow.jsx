@@ -27,7 +27,6 @@ export const CountriesTableRow = ({ country, index }) => {
   return (
     <>
       <TableRow
-        key={cca2}
         selected={isOpen}
         sx={{ '& > *': { borderBottom: 'unset' } }}
         onClick={() => onRowClick()}
@@ -43,9 +42,13 @@ export const CountriesTableRow = ({ country, index }) => {
         <TableCell align='right'>{subregion}</TableCell>
         <TableCell align='right'>
           <ul>
-            {languages
-              ? Object.keys(languages).map((lang) => <li key={lang}>{lang}</li>)
-              : 'Not defined'}
+            {languages ? (
+              Object.keys(languages).map((language, index) => (
+                <li key={index}>{language}</li>
+              ))
+            ) : (
+              <span>Not defined</span>
+            )}
           </ul>
         </TableCell>
         <TableCell>
