@@ -1,25 +1,27 @@
 {
   "files": {
     "main.css": "/dynamic-table/static/css/main.328fec49.css",
-    "main.js": "/dynamic-table/static/js/main.0872d10d.js",
+    "main.js": "/dynamic-table/static/js/main.fa4e0c01.js",
     "static/css/936.21ec0e4e.chunk.css": "/dynamic-table/static/css/936.21ec0e4e.chunk.css",
-    "static/js/936.b67aea1e.chunk.js": "/dynamic-table/static/js/936.b67aea1e.chunk.js",
-    "static/js/626.a4d5f296.chunk.js": "/dynamic-table/static/js/626.a4d5f296.chunk.js",
+    "static/js/936.111c3c68.chunk.js": "/dynamic-table/static/js/936.111c3c68.chunk.js",
+    "static/js/770.260cbc35.chunk.js": "/dynamic-table/static/js/770.260cbc35.chunk.js",
     "static/css/668.96981c7d.chunk.css": "/dynamic-table/static/css/668.96981c7d.chunk.css",
     "static/js/668.63650fbd.chunk.js": "/dynamic-table/static/js/668.63650fbd.chunk.js",
+    "static/js/424.54b1a219.chunk.js": "/dynamic-table/static/js/424.54b1a219.chunk.js",
     "static/js/856.c21ec8ac.chunk.js": "/dynamic-table/static/js/856.c21ec8ac.chunk.js",
     "index.html": "/dynamic-table/index.html",
     "main.328fec49.css.map": "/dynamic-table/static/css/main.328fec49.css.map",
-    "main.0872d10d.js.map": "/dynamic-table/static/js/main.0872d10d.js.map",
+    "main.fa4e0c01.js.map": "/dynamic-table/static/js/main.fa4e0c01.js.map",
     "936.21ec0e4e.chunk.css.map": "/dynamic-table/static/css/936.21ec0e4e.chunk.css.map",
-    "936.b67aea1e.chunk.js.map": "/dynamic-table/static/js/936.b67aea1e.chunk.js.map",
-    "626.a4d5f296.chunk.js.map": "/dynamic-table/static/js/626.a4d5f296.chunk.js.map",
+    "936.111c3c68.chunk.js.map": "/dynamic-table/static/js/936.111c3c68.chunk.js.map",
+    "770.260cbc35.chunk.js.map": "/dynamic-table/static/js/770.260cbc35.chunk.js.map",
     "668.96981c7d.chunk.css.map": "/dynamic-table/static/css/668.96981c7d.chunk.css.map",
     "668.63650fbd.chunk.js.map": "/dynamic-table/static/js/668.63650fbd.chunk.js.map",
+    "424.54b1a219.chunk.js.map": "/dynamic-table/static/js/424.54b1a219.chunk.js.map",
     "856.c21ec8ac.chunk.js.map": "/dynamic-table/static/js/856.c21ec8ac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.328fec49.css",
-    "static/js/main.0872d10d.js"
+    "static/js/main.fa4e0c01.js"
   ]
 }
