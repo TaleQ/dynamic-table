@@ -21,11 +21,6 @@ const countriesSlice = createSlice({
   name: 'countries',
   initialState: countriesInitialState,
   reducers: {
-    changeIndex: {
-      reducer(state, action) {
-        state.startIndex = action.payload;
-      },
-    },
     toggleIsDetailsShown: {
       reducer(state, action) {
         state.isDetailsShown = action.payload;
