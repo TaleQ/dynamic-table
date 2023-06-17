@@ -45,8 +45,8 @@ export const CountryDetails = ({ isOpen, country }) => {
                 <TableRow key={`${name.common}#details`}>
                   <TableCell component='th' scope='row'>
                     <img
-                      src={flag.svg}
-                      alt={flag.alt}
+                      // src={flag.svg}
+                      // alt={flag.alt}
                       width='300px'
                       height='150px'
                     />

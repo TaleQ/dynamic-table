@@ -41,15 +41,11 @@ export const CountriesTableRow = ({ country, index }) => {
         <TableCell align='right'>{region}</TableCell>
         <TableCell align='right'>{subregion}</TableCell>
         <TableCell align='right'>
-          <ul>
-            {languages ? (
-              Object.keys(languages).map((language, index) => (
-                <li key={index}>{language}</li>
-              ))
-            ) : (
-              <span>Not defined</span>
-            )}
-          </ul>
+          {languages ? (
+            Object.values(languages).join(', ')
+          ) : (
+            <span>Not defined</span>
+          )}
         </TableCell>
         <TableCell>
           <IconButton aria-label='expand row' size='small'>

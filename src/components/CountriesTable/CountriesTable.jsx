@@ -7,16 +7,25 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { CountriesTableRow } from './CountriesTableRow/CountriesTableRow';
 import { TablePagination } from '@mui/material';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useCountries } from '../../hooks/useCountries';
 
 export const CountriesTable = () => {
   const { countries } = useCountries();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const tableRef = useRef(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    scrollToTop();
+  };
+
+  const scrollToTop = () => {
+    const tableElement = tableRef.current;
+    if (tableElement) {
+      tableElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -35,7 +44,11 @@ export const CountriesTable = () => {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label='collapsible table'>
+      <Table
+        sx={{ minWidth: 650 }}
+        aria-label='collapsible table'
+        ref={tableRef}
+      >
         <TableHead>
           <TableRow>
             <TableCell>Number</TableCell>
