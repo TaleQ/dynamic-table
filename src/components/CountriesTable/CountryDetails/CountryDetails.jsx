@@ -7,11 +7,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const CountryDetails = ({ isOpen, country }) => {
   const {
     name,
-    flag,
+    flags,
     area = 'Not defined',
     population = 'Not defined',
     timezones,
@@ -19,6 +20,9 @@ export const CountryDetails = ({ isOpen, country }) => {
     car,
     maps,
   } = country;
+
+  const isObjEmpty = (obj) => Object.keys(obj).length === 0;
+
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -45,56 +49,54 @@ export const CountryDetails = ({ isOpen, country }) => {
                 <TableRow key={`${name.common}#details`}>
                   <TableCell component='th' scope='row'>
                     <img
-                      // src={flag.svg}
-                      // alt={flag.alt}
+                      src={flags?.svg ? flags.svg : ''}
+                      alt={flags?.alt ? flags.alt : 'Country flag'}
                       width='300px'
                       height='150px'
                     />
                   </TableCell>
                   <TableCell>
-                    {area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
+                    {area?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableCell>
                   <TableCell align='right'>
                     {population
-                      .toString()
+                      ?.toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {timezones?.length > 0 ? (
-                        timezones.map((timezone, index) => (
-                          <li key={index}>{timezone}</li>
-                        ))
-                      ) : (
-                        <span>Not defined</span>
-                      )}
+                      {timezones?.length
+                        ? timezones.map((timezone, index) => (
+                            <li key={index}>{timezone}</li>
+                          ))
+                        : 'Not defined'}
                     </ul>
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {currencies ? (
-                        Object.keys(currencies).map((currency, index) => (
-                          <li key={index}>{currency}</li>
-                        ))
-                      ) : (
-                        <span>Not defined</span>
-                      )}
+                      {isObjEmpty(currencies)
+                        ? 'Not defined'
+                        : Object.keys(currencies).map((currency, index) => (
+                            <li key={index}>{currency}</li>
+                          ))}
                     </ul>
                   </TableCell>
                   <TableCell align='right'>
                     <ul>
-                      {car.signs?.filter((sign) => sign !== '').length > 0 ? (
-                        car.signs.map((sign, index) => (
-                          <li key={index}>{sign}</li>
-                        ))
-                      ) : (
-                        <span>Not defined</span>
-                      )}
+                      {car.signs?.filter((sign) => sign !== '').length
+                        ? car.signs.map((sign, index) => (
+                            <li key={index}>{sign}</li>
+                          ))
+                        : 'Not defined'}
                     </ul>
                   </TableCell>
                   <TableCell>
                     <Link
-                      to={maps.googleMaps}
+                      to={
+                        maps?.googleMaps
+                          ? maps.googleMaps
+                          : 'https://www.google.com/maps'
+                      }
                       target='_blank'
                       rel='noopener noreferrer nofollow'
                     >
@@ -109,4 +111,28 @@ export const CountryDetails = ({ isOpen, country }) => {
       </TableCell>
     </TableRow>
   );
+};
+
+CountryDetails.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  country: PropTypes.shape({
+    name: PropTypes.shape({
+      official: PropTypes.string,
+      common: PropTypes.string,
+    }),
+    flags: PropTypes.shape({
+      svg: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+    area: PropTypes.number,
+    population: PropTypes.number,
+    timezones: PropTypes.arrayOf(PropTypes.string),
+    currencies: PropTypes.object,
+    car: PropTypes.shape({
+      signs: PropTypes.arrayOf(PropTypes.string),
+    }),
+    maps: PropTypes.shape({
+      googleMaps: PropTypes.string,
+    }),
+  }),
 };
