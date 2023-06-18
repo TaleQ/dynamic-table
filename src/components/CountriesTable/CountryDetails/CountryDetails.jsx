@@ -1,3 +1,4 @@
+import './CountryDetails.scss';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import Table from '@mui/material/Table';
@@ -25,45 +26,45 @@ export const CountryDetails = ({ isOpen, country }) => {
 
   return (
     <TableRow>
-      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={9}>
         <Collapse in={isOpen} timeout='auto' unmountOnExit>
-          <Box sx={{ margin: 1 }}>
+          <Box sx={{ marginTop: 3, marginBottom: 3 }}>
             <Typography variant='h6' gutterBottom component='div'>
               Country details
             </Typography>
-            <Table size='small' aria-label='purchases'>
+            <Table size='small' aria-label='countries'>
               <TableHead>
                 <TableRow>
-                  <TableCell>Flag</TableCell>
-                  <TableCell>Area&nbsp;(km2)</TableCell>
-                  <TableCell align='right'>Population</TableCell>
-                  <TableCell align='right'>Timezones</TableCell>
-                  <TableCell align='right'>Currencies</TableCell>
-                  <TableCell align='right'>Car&nbsp;signs</TableCell>
-                  <TableCell align='right'>
-                    Open&nbsp;on Google&nbsp;Maps
-                  </TableCell>
+                  <TableCell align='left'>Flag</TableCell>
+                  <TableCell align='left'>Area (km2)</TableCell>
+                  <TableCell align='left'>Population</TableCell>
+                  <TableCell align='left'>Timezones</TableCell>
+                  <TableCell align='left'>Currencies</TableCell>
+                  <TableCell align='left'>Car signs</TableCell>
+                  <TableCell align='left'>Link to Google Maps</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <TableRow key={`${name.common}#details`}>
-                  <TableCell component='th' scope='row'>
-                    <img
-                      src={flags?.svg ? flags.svg : ''}
-                      alt={flags?.alt ? flags.alt : 'Country flag'}
-                      width='300px'
-                      height='150px'
-                    />
+                  <TableCell component='th' scope='row' align='left'>
+                    <div className='flag-thumb'>
+                      <img
+                        src={flags?.svg ? flags.svg : ''}
+                        alt={flags?.alt ? flags.alt : 'Country flag'}
+                        width='290px'
+                        height='145px'
+                      />
+                    </div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='left'>
                     {area?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableCell>
-                  <TableCell align='right'>
+                  <TableCell align='left'>
                     {population
                       ?.toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')}
                   </TableCell>
-                  <TableCell align='right'>
+                  <TableCell align='left'>
                     <ul>
                       {timezones?.length
                         ? timezones.map((timezone, index) => (
@@ -72,7 +73,7 @@ export const CountryDetails = ({ isOpen, country }) => {
                         : 'Not defined'}
                     </ul>
                   </TableCell>
-                  <TableCell align='right'>
+                  <TableCell align='left'>
                     <ul>
                       {isObjEmpty(currencies)
                         ? 'Not defined'
@@ -81,7 +82,7 @@ export const CountryDetails = ({ isOpen, country }) => {
                           ))}
                     </ul>
                   </TableCell>
-                  <TableCell align='right'>
+                  <TableCell align='left'>
                     <ul>
                       {car.signs?.filter((sign) => sign !== '').length
                         ? car.signs.map((sign, index) => (

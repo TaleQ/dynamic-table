@@ -38,18 +38,18 @@ export const CountriesTableRow = ({ country, index }) => {
         sx={{ '& > *': { borderBottom: 'unset' } }}
         onClick={() => onRowClick()}
       >
-        <TableCell component='th' scope='row'>
+        <TableCell component='th' scope='row' align='center'>
           {index + 1}
         </TableCell>
-        <TableCell>{checkStringValue(name.official)}</TableCell>
-        <TableCell align='right'>{checkStringValue(name.common)}</TableCell>
-        <TableCell align='right'>{checkStringValue(cca2)}</TableCell>
-        <TableCell align='right'>
+        <TableCell align='left'>{checkStringValue(name.official)}</TableCell>
+        <TableCell align='left'>{checkStringValue(name.common)}</TableCell>
+        <TableCell align='left'>{checkStringValue(cca2)}</TableCell>
+        <TableCell align='left'>
           {capital?.length ? capital[0] : 'Not defined'}
         </TableCell>
-        <TableCell align='right'>{checkStringValue(region)}</TableCell>
-        <TableCell align='right'>{checkStringValue(subregion)}</TableCell>
-        <TableCell align='right'>
+        <TableCell align='left'>{checkStringValue(region)}</TableCell>
+        <TableCell align='left'>{checkStringValue(subregion)}</TableCell>
+        <TableCell align='left'>
           {isObjEmpty(languages)
             ? 'Not defined'
             : Object.values(languages).join(', ')}

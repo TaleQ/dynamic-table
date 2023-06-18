@@ -1,22 +1,22 @@
 import Table from '@mui/material/Table';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
+import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
 import { CountriesTableRow } from './CountriesTableRow/CountriesTableRow';
-import { TablePagination } from '@mui/material';
 import { useRef, useState } from 'react';
 import { useCountries } from '../../hooks/useCountries';
+import { CountriesTableHead } from './CountriesTableHead/CountriesTableHead';
 
 export const CountriesTable = () => {
   const { countries } = useCountries();
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(20);
   const tableRef = useRef(null);
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (_event, newPage) => {
     setPage(newPage);
     scrollToTop();
   };
@@ -33,44 +33,51 @@ export const CountriesTable = () => {
     setPage(0);
   };
 
-  const renderCountries = countries.slice(
+  const visibleCountries = countries.slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
+
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - countries.length) : 0;
 
   const getAbsoluteIndex = (index) => {
     return index + page * rowsPerPage;
   };
 
   return (
-    <TableContainer component={Paper}>
-      <Table
-        sx={{ minWidth: 650 }}
-        aria-label='collapsible table'
-        ref={tableRef}
-      >
-        <TableHead>
-          <TableRow>
-            <TableCell>Number</TableCell>
-            <TableCell>Official&nbsp;name</TableCell>
-            <TableCell align='center'>Common&nbsp;name</TableCell>
-            <TableCell align='center'>Country&nbsp;Code</TableCell>
-            <TableCell align='center'>Capital</TableCell>
-            <TableCell align='center'>Region</TableCell>
-            <TableCell align='center'>Subregion</TableCell>
-            <TableCell align='center'>Languages</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {renderCountries?.map((country, index) => (
-            <CountriesTableRow
-              key={index}
-              country={country}
-              index={getAbsoluteIndex(index)}
-            />
-          ))}
-        </TableBody>
-      </Table>
+    <Paper
+      sx={{
+        width: '100%',
+        minWidth: 650,
+        backgroundColor: 'inherit',
+        boxShadow: 'none',
+      }}
+    >
+      <TableContainer sx={{ width: '100%', minWidth: 650 }}>
+        <Table
+          sx={{ width: '100%', minWidth: 650 }}
+          aria-label='countries table'
+          ref={tableRef}
+        >
+          <CountriesTableHead />
+          <TableBody>
+            {visibleCountries?.map((country, index) => (
+              <CountriesTableRow
+                key={index}
+                country={country}
+                index={getAbsoluteIndex(index)}
+                sx={{ cursor: 'pointer' }}
+              />
+            ))}
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={9} />
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10, 20, 50, { value: -1, label: 'All' }]}
         component='div'
@@ -80,6 +87,6 @@ export const CountriesTable = () => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </TableContainer>
+    </Paper>
   );
 };
