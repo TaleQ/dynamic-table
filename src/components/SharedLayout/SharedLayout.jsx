@@ -1,21 +1,23 @@
+import './SharedLayout.scss';
 import { Outlet } from 'react-router-dom';
-import css from './SharedLayout.module.css';
 import { Loader } from '../Loader/Loader';
-import { SearchForm } from '../SearchForm/SearchForm';
 import BreadcrumbsNavigation from '../BreadcrumbsNavigation/BreadcrumbsNavigation';
 import { useCountries } from '../../hooks/useCountries';
+import earthGif from '../../assets/images/earth.gif';
 
 export const SharedLayout = () => {
   const { isLoading } = useCountries();
   return (
     <>
-      <header className={css.header}>
-        <p>Dynamic Countries Table</p>
-        <BreadcrumbsNavigation />
+      <header className='header'>
+        <div className='header-container'>
+          <h1 className='main-title'>Dynamic Countries Table</h1>
+          <BreadcrumbsNavigation />
+        </div>
+        <img className='header-img' src={earthGif} alt='Earth' />
       </header>
       <main>
-        <div className={css.container}>
-          <SearchForm />
+        <div className='container'>
           {isLoading && <Loader />}
           <Outlet />
         </div>
