@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 
 axios.defaults.baseURL = 'https://restcountries.com/v3.1/';
 
@@ -38,7 +39,16 @@ export const getCountryByName = createAsyncThunk(
       const { data } = await axios.get(
         `/name/${name}?fields=${filterFields.join(',')}`
       );
-      console.log(data);
+      let message;
+      if (data.length > 1) {
+        message = `Found ${data.length} countries for query '${name}'`;
+      }
+      if (data.length === 1) {
+        message = 'Found 1 result';
+      }
+      Notify.success(message, {
+        position: 'center-top',
+      });
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -26,6 +26,11 @@ const countriesSlice = createSlice({
         state.isDetailsShown = action.payload;
       },
     },
+    sortCountries: {
+      reducer(state, action) {
+        state.items = action.payload;
+      },
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -39,6 +44,9 @@ const countriesSlice = createSlice({
         state.error = null;
         state.items = action.payload;
       })
+      .addCase(getCountryByName.rejected, (state, action) => {
+        state.items = [];
+      })
       .addMatcher(
         isAnyOf(getAllCountries.pending, getCountryByName.pending),
         handlePending
@@ -50,5 +58,5 @@ const countriesSlice = createSlice({
   },
 });
 
-export const { changeIndex, toggleIsDetailsShown } = countriesSlice.actions;
+export const { toggleIsDetailsShown, sortCountries } = countriesSlice.actions;
 export const countriesReducer = countriesSlice.reducer;
