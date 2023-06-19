@@ -1,4 +1,4 @@
-import './CountryDetails.scss';
+import '../CountriesTable.scss';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import Table from '@mui/material/Table';
@@ -49,7 +49,7 @@ export const CountryDetails = ({ isOpen, country }) => {
                   <TableCell component='th' scope='row' align='left'>
                     <div className='flag-thumb'>
                       <img
-                        src={flags?.svg ? flags.svg : ''}
+                        src={flags?.png}
                         alt={flags?.alt ? flags.alt : 'Country flag'}
                         width='290px'
                         height='145px'
@@ -91,8 +91,9 @@ export const CountryDetails = ({ isOpen, country }) => {
                         : 'Not defined'}
                     </ul>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align='left'>
                     <Link
+                      className='maps-link'
                       to={
                         maps?.googleMaps
                           ? maps.googleMaps

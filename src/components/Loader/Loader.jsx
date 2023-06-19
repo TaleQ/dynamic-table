@@ -1,7 +1,16 @@
-import css from "./Loader.module.css";
+import { ThreeCircles } from 'react-loader-spinner';
+import './Loader.scss';
 
 export const Loader = () => (
-  <div className={css.loaderOverlay}>
-    <div className={css.spinner}></div>
-  </div>
+  <ThreeCircles
+    height='100'
+    width='100'
+    color='#4fa94d'
+    wrapperClass='loaderOverlay'
+    visible={true}
+    ariaLabel='three-circles-rotating'
+    outerCircleColor='#14578e'
+    innerCircleColor='#ed1c24'
+    middleCircleColor='#d3b44f'
+  />
 );

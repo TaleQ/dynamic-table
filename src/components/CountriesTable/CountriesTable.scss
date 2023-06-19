@@ -1,0 +1,51 @@
+@use '../../sass/utils/_variables' as v;
+@use '../../sass/utils/_mixins.scss' as m;
+@use '../../index.scss';
+
+.MuiTablePagination-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.sort-icon-btn {
+  margin-left: 3px;
+  padding: 3px;
+  border: 1px solid v.$main-text-color;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.flag-thumb {
+  width: 240px;
+  height: 120px;
+  border: 1px solid v.$basic-border-color;
+  object-fit: contain;
+  overflow: hidden;
+
+  @include m.mobile {
+    width: 290px;
+    height: 145px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.no-countries-thumb {
+  margin: 0 auto;
+  width: 300px;
+  text-align: center;
+}
+
+.no-countries-text {
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.maps-link {
+  @extend .base-btn-link;
+}

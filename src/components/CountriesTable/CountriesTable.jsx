@@ -1,14 +1,14 @@
+import './CountriesTable.scss';
 import Table from '@mui/material/Table';
 import TableContainer from '@mui/material/TableContainer';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
 import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
 import { CountriesTableRow } from './CountriesTableRow/CountriesTableRow';
 import { useRef, useState } from 'react';
 import { useCountries } from '../../hooks/useCountries';
 import { CountriesTableHead } from './CountriesTableHead/CountriesTableHead';
+import NoCountriesFound from '../../assets/images/nothing_found_img.png';
 
 export const CountriesTable = () => {
   const { countries } = useCountries();
@@ -38,9 +38,6 @@ export const CountriesTable = () => {
     page * rowsPerPage + rowsPerPage
   );
 
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - countries.length) : 0;
-
   const getAbsoluteIndex = (index) => {
     return index + page * rowsPerPage;
   };
@@ -54,35 +51,39 @@ export const CountriesTable = () => {
         overflow: 'hidden',
       }}
     >
-      <TableContainer>
-        <Table aria-label='countries table' ref={tableRef}>
-          <CountriesTableHead />
-          <TableBody>
-            {visibleCountries?.map((country, index) => (
-              <CountriesTableRow
-                key={index}
-                country={country}
-                index={getAbsoluteIndex(index)}
-                sx={{ cursor: 'pointer' }}
-              />
-            ))}
-            {emptyRows > 0 && (
-              <TableRow style={{ height: 53 * emptyRows }}>
-                <TableCell colSpan={9} />
-              </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 20, 50, { value: -1, label: 'All' }]}
-        component='div'
-        count={countries.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+      {visibleCountries.length ? (
+        <>
+          <TableContainer>
+            <Table aria-label='countries table' ref={tableRef}>
+              <CountriesTableHead />
+              <TableBody>
+                {visibleCountries?.map((country, index) => (
+                  <CountriesTableRow
+                    key={index}
+                    country={country}
+                    index={getAbsoluteIndex(index)}
+                    sx={{ cursor: 'pointer', minHeight: 95 }}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[10, 20, 50, { value: -1, label: 'All' }]}
+            component='div'
+            count={countries.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </>
+      ) : (
+        <div className='no-countries-thumb'>
+          <p className='no-countries-text'>No countries found</p>
+          <img src={NoCountriesFound} alt='Nothing found' />
+        </div>
+      )}
     </Paper>
   );
 };

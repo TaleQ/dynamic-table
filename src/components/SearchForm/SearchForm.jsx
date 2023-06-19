@@ -1,3 +1,4 @@
+import './SearchForm.scss';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Notify } from 'notiflix';
@@ -5,7 +6,7 @@ import { TfiSearch } from 'react-icons/tfi';
 
 export const SearchForm = () => {
   const [inputValue, setInputValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -13,7 +14,7 @@ export const SearchForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const searchQuery = inputValue.trim().toLowerCase();
+    const searchQuery = inputValue.trim();
     if (!searchQuery) {
       Notify.info('Please enter a search query', { position: 'center-top' });
       return;
@@ -22,8 +23,9 @@ export const SearchForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='search-form' onSubmit={handleSubmit}>
       <input
+        className='form-input'
         type='text'
         autoComplete='off'
         autoFocus
@@ -31,8 +33,8 @@ export const SearchForm = () => {
         value={inputValue}
         onChange={handleChange}
       />
-      <button type='submit'>
-        <TfiSearch fill='#ffffff' />
+      <button className='form-btn' type='submit'>
+        <TfiSearch className='form-btn__icon' fill='#14578e' />
       </button>
     </form>
   );
