@@ -1,14 +1,12 @@
-import { NavLink } from 'react-router-dom';
-import css from './Home.module.css';
+import './Home.scss';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <>
-      <div className={css.homeThumb}>
-        <h2 className={css.title}>Countries Search</h2>
-        <button className={css.navBtn}>
-          <NavLink to='/countries'>See all countries</NavLink>
-        </button>
+      <div className='home-thumb'>
+        <h2 className='home-title'>Countries Search</h2>
+        <Link to='/countries'>See all countries</Link>
       </div>
     </>
   );

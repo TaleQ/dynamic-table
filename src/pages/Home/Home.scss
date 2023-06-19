@@ -1,0 +1,5 @@
+@use '../../sass/utils/variables' as v;
+
+.home-title {
+  color: v.$accent-color;
+}
