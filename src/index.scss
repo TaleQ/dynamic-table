@@ -29,13 +29,6 @@ code {
     monospace;
 }
 
-.MuiTablePagination-root {
-  @media screen and (max-width: 700px) {
-    width: calc(100vw - 40px);
-    padding: 0;
-  }
-}
-
 .MuiTablePagination-toolbar {
   display: flex;
   flex-wrap: wrap;

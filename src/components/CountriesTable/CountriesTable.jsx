@@ -49,17 +49,13 @@ export const CountriesTable = () => {
     <Paper
       sx={{
         width: '100%',
-        minWidth: 650,
         backgroundColor: 'inherit',
         boxShadow: 'none',
+        overflow: 'hidden',
       }}
     >
-      <TableContainer sx={{ width: '100%', minWidth: 650 }}>
-        <Table
-          sx={{ width: '100%', minWidth: 650 }}
-          aria-label='countries table'
-          ref={tableRef}
-        >
+      <TableContainer>
+        <Table aria-label='countries table' ref={tableRef}>
           <CountriesTableHead />
           <TableBody>
             {visibleCountries?.map((country, index) => (

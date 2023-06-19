@@ -1,17 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { toggleIsDetailsShown } from '../../../redux/countriesSlice';
+import { useCountries } from '../../../hooks/useCountries';
+import { CountryDetails } from '../CountryDetails/CountryDetails';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useDispatch } from 'react-redux';
-import { toggleIsDetailsShown } from '../../../redux/countriesSlice';
-import { CountryDetails } from '../CountryDetails/CountryDetails';
 import PropTypes from 'prop-types';
 
 export const CountriesTableRow = ({ country, index }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isDetailsShown } = useCountries();
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isDetailsShown) {
+      setIsOpen(false);
+    }
+  }, [isDetailsShown]);
 
   const { name, cca2, capital, region, subregion, languages } = country;
 
@@ -28,7 +37,6 @@ export const CountriesTableRow = ({ country, index }) => {
   const onRowClick = () => {
     dispatch(toggleIsDetailsShown(!isOpen));
     setIsOpen(!isOpen);
-    console.log(country);
   };
 
   return (

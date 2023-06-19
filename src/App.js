@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { useDispatch } from 'react-redux';
 import { Suspense, lazy, useEffect } from 'react';
 import { getAllCountries } from './redux/operations';

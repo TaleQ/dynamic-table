@@ -1,28 +1,24 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Notify } from 'notiflix';
-import { useDispatch } from 'react-redux';
-import { getCountryByName } from '../../redux/operations';
 import { TfiSearch } from 'react-icons/tfi';
-import { useNavigate } from 'react-router-dom';
 
 export const SearchForm = () => {
   const [inputValue, setInputValue] = useState('');
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchQuery = inputValue.trim().toLowerCase();
     if (!searchQuery) {
-      Notify.info('Please enter search query');
+      Notify.info('Please enter a search query', { position: 'center-top' });
       return;
     }
-    dispatch(getCountryByName(inputValue));
-    setInputValue('');
-    navigate('countries');
+    setSearchParams({ query: searchQuery });
   };
 
   return (
