@@ -8,13 +8,44 @@
   justify-content: center;
 }
 
-.sort-icon-btn {
+.sort-btn {
   margin-left: 3px;
-  padding: 3px;
+  padding: 2px;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid v.$main-text-color;
   background-color: transparent;
   border-radius: 50%;
   cursor: pointer;
+  transition: background-color v.$transition-time;
+
+  &::after {
+    content: 'Sort by alphabet';
+    position: absolute;
+    background-color: v.$accent-color;
+    color: #fff;
+    padding: 1px 5px;
+    border-radius: 4px;
+    left: 100%;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity v.$transition-time;
+  }
+
+  &:hover {
+    background-color: v.$accent-color;
+    fill: #fff;
+    border-color: transparent;
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  svg {
+    fill: inherit;
+  }
 }
 
 .flag-thumb {

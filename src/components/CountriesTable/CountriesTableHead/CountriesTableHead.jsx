@@ -36,7 +36,7 @@ export const CountriesTableHead = () => {
         </TableCell>
         <TableCell align='left' sx={{ width: '23%' }}>
           <span>Official name</span>
-          <button className='sort-icon-btn' onClick={() => onSortBtnClick()}>
+          <button className='sort-btn' onClick={() => onSortBtnClick()}>
             <SortByAlphaRoundedIcon
               fontSize='large'
               sx={{
