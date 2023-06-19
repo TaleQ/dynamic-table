@@ -8,7 +8,7 @@ import { CountriesTableRow } from './CountriesTableRow/CountriesTableRow';
 import { useRef, useState } from 'react';
 import { useCountries } from '../../hooks/useCountries';
 import { CountriesTableHead } from './CountriesTableHead/CountriesTableHead';
-import NoCountriesFound from '../../assets/images/nothing_found_img.png';
+import NoCountriesFound from '../../assets/images/no_countries_found.png';
 
 export const CountriesTable = () => {
   const { countries } = useCountries();
