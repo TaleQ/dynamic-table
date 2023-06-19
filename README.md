@@ -1,3 +1,3 @@
 # Dynamic Table
 
-![Home Page](src/assets/images/readme/readme_home.png)
+![Home Page](src/assets/images/readme/readme_img.png)
