@@ -31,8 +31,10 @@ export const CountriesTableHead = () => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell align='left'>Number</TableCell>
-        <TableCell align='left' sx={{ minWidth: 185 }}>
+        <TableCell align='left' sx={{ width: '5%' }}>
+          Number
+        </TableCell>
+        <TableCell align='left' sx={{ width: '23%' }}>
           <span>Official name</span>
           <button className='sort-icon-btn' onClick={() => onSortBtnClick()}>
             <SortByAlphaRoundedIcon
@@ -46,13 +48,25 @@ export const CountriesTableHead = () => {
             />
           </button>
         </TableCell>
-        <TableCell align='left'>Common name</TableCell>
-        <TableCell align='left'>Country code</TableCell>
-        <TableCell align='left'>Capital</TableCell>
-        <TableCell align='left'>Region</TableCell>
-        <TableCell align='left'>Subregion</TableCell>
-        <TableCell align='left'>Languages</TableCell>
-        <TableCell></TableCell>
+        <TableCell align='left' sx={{ width: '15%' }}>
+          Common name
+        </TableCell>
+        <TableCell align='left' sx={{ width: '5%' }}>
+          Code
+        </TableCell>
+        <TableCell align='left' sx={{ width: '10%' }}>
+          Capital
+        </TableCell>
+        <TableCell align='left' sx={{ width: '10%' }}>
+          Region
+        </TableCell>
+        <TableCell align='left' sx={{ width: '10%' }}>
+          Subregion
+        </TableCell>
+        <TableCell align='left' sx={{ width: '17%' }}>
+          Languages
+        </TableCell>
+        <TableCell sx={{ width: '5%' }}></TableCell>
       </TableRow>
     </TableHead>
   );

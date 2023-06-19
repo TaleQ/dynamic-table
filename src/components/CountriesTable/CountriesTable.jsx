@@ -59,7 +59,7 @@ export const CountriesTable = () => {
               <TableBody>
                 {visibleCountries?.map((country, index) => (
                   <CountriesTableRow
-                    key={index}
+                    key={`${country.name.common}_${index}`}
                     country={country}
                     index={getAbsoluteIndex(index)}
                     sx={{ cursor: 'pointer', minHeight: 95 }}
@@ -69,7 +69,12 @@ export const CountriesTable = () => {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[10, 20, 50, { value: -1, label: 'All' }]}
+            rowsPerPageOptions={[
+              10,
+              20,
+              50,
+              { value: countries.length, label: 'All' },
+            ]}
             component='div'
             count={countries.length}
             rowsPerPage={rowsPerPage}

@@ -35,13 +35,17 @@ export const CountryDetails = ({ isOpen, country }) => {
             <Table size='small' aria-label='countries'>
               <TableHead>
                 <TableRow>
-                  <TableCell align='left'>Flag</TableCell>
+                  <TableCell align='left' sx={{ width: '25%' }}>
+                    Flag
+                  </TableCell>
                   <TableCell align='left'>Area (km2)</TableCell>
                   <TableCell align='left'>Population</TableCell>
                   <TableCell align='left'>Timezones</TableCell>
                   <TableCell align='left'>Currencies</TableCell>
                   <TableCell align='left'>Car signs</TableCell>
-                  <TableCell align='left'>Link to Google Maps</TableCell>
+                  <TableCell align='left' sx={{ width: '5%' }}>
+                    Google Maps
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
