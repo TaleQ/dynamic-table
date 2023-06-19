@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkdynamic_table=self.webpackChunkdynamic_table||[]).push([[81],{6081:function(n,e,t){t.r(e),t.d(e,{NotFound:function(){return a},default:function(){return c}});var u=t(184),a=function(){return(0,u.jsx)("div",{className:"notFoundBox",children:(0,u.jsx)("p",{className:"notFoundText",children:"This page wasn't found"})})},c=a}}]);
-//# sourceMappingURL=81.59b72143.chunk.js.map

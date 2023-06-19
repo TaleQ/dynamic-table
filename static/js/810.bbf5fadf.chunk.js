@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkdynamic_table=self.webpackChunkdynamic_table||[]).push([[810],{3810:function(e,n,t){t.r(n),t.d(n,{default:function(){return r}});var s=t(1087),a=t(184),r=function(){return(0,a.jsx)(a.Fragment,{children:(0,a.jsxs)("div",{className:"home-thumb",children:[(0,a.jsx)("h1",{className:"home-title",children:"Countries Search"}),(0,a.jsx)(s.rU,{className:"home-link",to:"/countries",children:"Start now".toUpperCase()})]})})}}}]);
+//# sourceMappingURL=810.bbf5fadf.chunk.js.map
