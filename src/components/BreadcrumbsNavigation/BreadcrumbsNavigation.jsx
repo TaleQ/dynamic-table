@@ -1,5 +1,5 @@
 import './BreadcrumbsNavigation.scss';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import HomeIcon from '@mui/icons-material/Home';
@@ -14,6 +14,8 @@ const BreadcrumbsNavigation = () => {
   const searchQuery = searchParams.get('query');
 
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
+  const isCountriesPage = pathname === '/countries';
 
   return (
     <Breadcrumbs
@@ -31,14 +33,16 @@ const BreadcrumbsNavigation = () => {
         <HomeIcon sx={{ mr: 0.5, mb: 0.3 }} fontSize='inherit' />
         Home
       </Link>
-      <Link
-        underline='hover'
-        color='inherit'
-        to='/countries'
-        onClick={() => dispatch(toggleIsDetailsShown(false))}
-      >
-        All countries
-      </Link>
+      {isCountriesPage ? (
+        <Link
+          underline='hover'
+          color='inherit'
+          to='/countries'
+          onClick={() => dispatch(toggleIsDetailsShown(false))}
+        >
+          All countries
+        </Link>
+      ) : null}
       {searchQuery ? (
         <Link
           underline='hover'
