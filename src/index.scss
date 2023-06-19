@@ -20,7 +20,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
+  background-color: v.$bg-color;
+  color: v.$main-text-color;
   cursor: default;
 }
 
@@ -29,8 +30,19 @@ code {
     monospace;
 }
 
-.MuiTablePagination-toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.base-btn-link {
+  padding: 7px;
+  background-color: v.$accent-color;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter v.$transition-time, color v.$transition-time,
+    text-decoration v.$transition-time;
+
+  &:hover {
+    filter: v.$hover-drop-shadow;
+    color: rgb(186, 210, 247);
+    text-decoration: none;
+  }
 }
