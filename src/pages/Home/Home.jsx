@@ -2,11 +2,15 @@ import './Home.scss';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const btnText = 'Start now';
+
   return (
     <>
       <div className='home-thumb'>
-        <h2 className='home-title'>Countries Search</h2>
-        <Link to='/countries'>See all countries</Link>
+        <h1 className='home-title'>Countries Search</h1>
+        <Link className='home-link' to='/countries'>
+          {btnText.toUpperCase()}
+        </Link>
       </div>
     </>
   );

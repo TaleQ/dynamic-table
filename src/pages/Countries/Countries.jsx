@@ -7,7 +7,7 @@ import { SearchForm } from '../../components/SearchForm/SearchForm';
 
 const Countries = () => {
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('query');
 
   useEffect(() => {
