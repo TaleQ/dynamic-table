@@ -1,30 +1,13 @@
 {
   "files": {
-    "main.css": "/dynamic-table/static/css/main.368ede3d.css",
-    "main.js": "/dynamic-table/static/js/main.599b1b71.js",
-    "static/css/810.7bc0f866.chunk.css": "/dynamic-table/static/css/810.7bc0f866.chunk.css",
-    "static/js/810.08f7bc51.chunk.js": "/dynamic-table/static/js/810.08f7bc51.chunk.js",
-    "static/css/716.61f70fed.chunk.css": "/dynamic-table/static/css/716.61f70fed.chunk.css",
-    "static/js/716.22e553fb.chunk.js": "/dynamic-table/static/js/716.22e553fb.chunk.js",
-    "static/css/758.0ed407a9.chunk.css": "/dynamic-table/static/css/758.0ed407a9.chunk.css",
-    "static/js/758.f0428862.chunk.js": "/dynamic-table/static/js/758.f0428862.chunk.js",
-    "static/js/61.18a2a3ab.chunk.js": "/dynamic-table/static/js/61.18a2a3ab.chunk.js",
-    "static/media/earth.gif": "/dynamic-table/static/media/earth.fc1630f9a0b19cbc001f.gif",
-    "static/media/flags_text_bg.png": "/dynamic-table/static/media/flags_text_bg.d0004a2285c0a9053f03.png",
-    "static/media/notfound_page.png": "/dynamic-table/static/media/notfound_page.13b500bdd6ba1cca821c.png",
+    "main.css": "/dynamic-table/static/css/main.073c9b0a.css",
+    "main.js": "/dynamic-table/static/js/main.d5f5d18f.js",
     "index.html": "/dynamic-table/index.html",
-    "main.368ede3d.css.map": "/dynamic-table/static/css/main.368ede3d.css.map",
-    "main.599b1b71.js.map": "/dynamic-table/static/js/main.599b1b71.js.map",
-    "810.7bc0f866.chunk.css.map": "/dynamic-table/static/css/810.7bc0f866.chunk.css.map",
-    "810.08f7bc51.chunk.js.map": "/dynamic-table/static/js/810.08f7bc51.chunk.js.map",
-    "716.61f70fed.chunk.css.map": "/dynamic-table/static/css/716.61f70fed.chunk.css.map",
-    "716.22e553fb.chunk.js.map": "/dynamic-table/static/js/716.22e553fb.chunk.js.map",
-    "758.0ed407a9.chunk.css.map": "/dynamic-table/static/css/758.0ed407a9.chunk.css.map",
-    "758.f0428862.chunk.js.map": "/dynamic-table/static/js/758.f0428862.chunk.js.map",
-    "61.18a2a3ab.chunk.js.map": "/dynamic-table/static/js/61.18a2a3ab.chunk.js.map"
+    "main.073c9b0a.css.map": "/dynamic-table/static/css/main.073c9b0a.css.map",
+    "main.d5f5d18f.js.map": "/dynamic-table/static/js/main.d5f5d18f.js.map"
   },
   "entrypoints": [
-    "static/css/main.368ede3d.css",
-    "static/js/main.599b1b71.js"
+    "static/css/main.073c9b0a.css",
+    "static/js/main.d5f5d18f.js"
   ]
 }
